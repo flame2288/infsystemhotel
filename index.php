@@ -13,17 +13,26 @@ require "dbconnect.php";
     <title>Document</title>
 </head>
 <body>
-<h1>infsyshotel</h1>
+<h1>информационная система гостиничного комплекса</h1>
 
 <?php
-echo "<h2>infsyshotel</h2>";
+echo "<h2>Гости</h2>";
 
 $result = $conn->query("SELECT * FROM гости");
 
-while ($row = $result->fetch()){
-    echo $row['ID'];
-    echo $row['Name'];
+echo "<table border='1'>
+<tr>
+<th>ID</th>
+<th>Name</th>
+</tr>";
+
+while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+    echo "<tr>";
+    echo "<td>" . $row['ID'] . "</td>";
+    echo "<td>" . $row['Name'] . "</td>";
+    echo "</tr>";
 }
+echo "</table>";
 ?>
 
 </body>
